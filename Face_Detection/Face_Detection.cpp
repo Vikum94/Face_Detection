@@ -11,7 +11,7 @@
 #include<opencv2\highgui\highgui.hpp>
 #include<opencv2\imgproc\imgproc.hpp>
 #include<vector>
-
+#include <iostream>
 using namespace cv;
 using namespace std;
 
@@ -61,6 +61,8 @@ int main()
 		if (c == 27)
 			break;
 	}
+
+	cout << "Hi asdas"<<endl;
 	return 0;
 }
 
