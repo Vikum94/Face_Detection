@@ -1,26 +1,30 @@
 #include <string>
 #include <iostream>
-#include <stdio.h>
+
 using namespace std;
 
 class Customer {
+
 private:
 	string firstName;
 	string surname;
-	int id;
+	int idNumber;
 	string status;
 	string picturePath;
+
+	static int totalPrivileged;
+	static int totalBadCustomers;
 
 public:
 	string getFisrstName() { return firstName; }
 	string getSurname() { return surname; }
-	int getId() { return id; }
+	int getIdNumber() { return idNumber; }
 	string getStatus() { return status; }
 	
 	void setFirstName(string firstName) { this->firstName = firstName; }
 	void setsurname(string surname) { this->surname = surname; }
-	void setId(int id) { this->id = id; }
-	void setStatus(string status) { this->status = status; }
+	void setIdNumber(int idNumber) { this->idNumber = idNumber; }
+	void setStatus(string, bool);
 	void setPicturePath(string picturePath) { this->picturePath = picturePath; }
 
 	bool train();
@@ -32,15 +36,19 @@ public:
 
 };
 
-bool Customer::train() {
-	//training the customer picture to the system
-	return true;
+void Customer::setStatus(string status, bool isPrivileged) {
+	this->status = status; 
+	if (isPrivileged) {
+		Customer::totalPrivileged += 1;
+	}
+	else
+		Customer::totalBadCustomers += 1;
 }
 
-Customer::Customer(string firstName, string surname, int id) {
+Customer::Customer(string firstName, string surname, int idNumber) {
 	this->firstName = firstName;
 	this->surname = surname;
-	this->id = id;
+	this->idNumber = idNumber;
 }
 
 Customer::Customer() {
@@ -49,4 +57,9 @@ Customer::Customer() {
 
 Customer::~Customer() {
 	cout << this->getFisrstName + getSurname << "destroyed" << endl;
+}
+
+bool Customer::train() {
+	//training the customer picture to the system
+	return true;
 }
