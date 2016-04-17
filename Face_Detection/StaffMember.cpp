@@ -1,28 +1,13 @@
-#include <iostream>
-#include <string>
+#include "stdafx.h"
+#include "StaffMember.h"
 
-using namespace std;
+int StaffMember::totalStaff = 0;
 
-class StaffMember {
-private:
-	string name;
-	int idNumber;
-	string picturePath;
-	static int totalStaff;
-
-public:
-	string getName() { return name; }
-	int getIdNumber() { return idNumber; }
-	string getPicturePath() { return picturePath; }
-
-	void setIdNumber(int idNumber) { this->idNumber = idNumber; }
-	void setPicturePath(string picturePath) { this->picturePath = picturePath; }
-
-	StaffMember(string, int, string);
-
-	StaffMember();
-	~StaffMember();
-};
+string StaffMember::getName() { return name; }
+int StaffMember::getIdNumber() { return idNumber; }
+string StaffMember::getPicturePath() { return picturePath; }
+void StaffMember::setIdNumber(int idNumber) { this->idNumber = idNumber; }
+void StaffMember::setPicturePath(string picturePath) { this->picturePath = picturePath; }
 
 StaffMember::StaffMember(string name, int idNumber, string picturePath) {
 	this->name = name;
@@ -38,4 +23,3 @@ StaffMember::StaffMember() {
 StaffMember::~StaffMember() {
 	StaffMember::totalStaff -= 1;
 }
-
