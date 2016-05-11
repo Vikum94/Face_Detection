@@ -1,13 +1,17 @@
 #include "Controller.h"
 
+std::vector<std::string> Controller::id_list;
+
 void Controller::add_customer(std::string first_name, std::string last_name, std::string pic_name, std::string status, bool is_privileged){
 	Customer new_customer = Customer(first_name, last_name, pic_name);
 	new_customer.setStatus(status, is_privileged);
+	id_list.push_back(new_customer.getIdNumber());
 
 }
 
 void Controller::add_staffMember(std::string first_name, std::string last_name, std::string employee_level, std::string pic_name){
 	StaffMember new_staffMember = StaffMember(first_name, last_name, employee_level, pic_name);
+	id_list.push_back(new_staffMember.getIdNumber());
 }
 
 int Controller::get_total_customers(){

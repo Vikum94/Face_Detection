@@ -6,7 +6,7 @@ using namespace System::Net;
 using namespace System::Net::NetworkInformation;
 using namespace System::Text;
 
-//192.168.43.10:8080/blink?f=
+//192.168.43.140:8080/blink?f=
 //192.168.43.140
 
 int MobileDevice::num = 0;
@@ -14,15 +14,15 @@ int MobileDevice::num = 0;
 void MobileDevice::sendMyRequest(System::String^ identifier) {
 	WebRequest^ Request;
 	HttpWebResponse^ Response;
-	HttpListenerResponse^ myRes;
-	Stream^ Stream1;
-	StreamReader^ SReader;
-	String^ Responsestring;
+	//HttpListenerResponse^ myRes;
+	//Stream^ Stream1;
+	//StreamReader^ SReader;
+	//String^ Responsestring;
 	String^ PATH = "http://google." + identifier; //PATH to File on server //
 	int CONN;
 
 	Ping ^pingSender = gcnew Ping;
-	PingReply ^ reply = pingSender->Send("google.com");
+	PingReply ^ reply = pingSender->Send("www.google.com");
 
 	if (reply->Status == IPStatus::Success)
 	{
@@ -42,12 +42,12 @@ void MobileDevice::sendMyRequest(System::String^ identifier) {
 			Request = WebRequest::CreateHttp(PATH);
 			Request->Credentials = CredentialCache::DefaultCredentials;
 			Response = static_cast<HttpWebResponse^>(Request->GetResponse());
-			Stream1 = Response->GetResponseStream();
-			SReader = gcnew StreamReader(Stream1);
-			Responsestring = SReader->ReadToEnd();
-			Console::WriteLine("Data from remote server:\n" + Responsestring + ".\n");
-			SReader->Close();
-			Stream1->Close();
+			//Stream1 = Response->GetResponseStream();
+			//SReader = gcnew StreamReader(Stream1);
+			//Responsestring = SReader->ReadToEnd();
+			Console::WriteLine("Data from remote server:\n");
+			//SReader->Close();
+			//Stream1->Close();
 			Response->Close();
 		}
 		catch (std::exception& e){

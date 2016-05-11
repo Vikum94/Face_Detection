@@ -12,6 +12,10 @@
 #ifndef FACEREC_H
 #define FACEREC_H
 #include "common.h"
+#include "Controller.h"
+
+bool running = true;
+
 void dbread(const std::string& filename, std::vector<cv::Mat>& images, std::vector<int>& labels, char separator = ';') {
 	std::ifstream file(filename.c_str(), std::ifstream::in);
 
@@ -69,18 +73,12 @@ void LBPHFaceTrainer() {
 int  FaceRecognition() {
 
 	std::cout << "start recognizing..." << std::endl;
-
+	
 	//load pre-trained data sets
 	//Ptr<FaceRecognizer>  model = createFisherFaceRecognizer();
 	cv::Ptr<cv::FaceRecognizer> model = cv::createLBPHFaceRecognizer();
 
 	model->load("C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/LBPHface.yml");
-	/*
-	Mat testSample = imread("E:/db/s41/5.pgm", 0);
-
-	int img_width = testSample.cols;
-	int img_height = testSample.rows;
-	*/
 
 	//lbpcascades/lbpcascade_frontalface.xml
 	std::string classifier = "C:/opencv1/sources/data/haarcascades/haarcascade_frontalface_default.xml";
@@ -93,8 +91,8 @@ int  FaceRecognition() {
 		return -1;
 	}
 
+	//capture the video stream
 	cv::VideoCapture cap(0);
-	//VideoCapture cap("C:/Users/lsf-admin/Pictures/Camera Roll/video000.mp4");
 
 	if (!cap.isOpened())
 	{
@@ -107,7 +105,7 @@ int  FaceRecognition() {
 	cv::namedWindow(window, 1);
 	long count = 0;
 
-	while (count<100)
+	while (running)
 	{
 		std::vector<cv::Rect> faces;
 		cv::Mat frame;
@@ -131,7 +129,7 @@ int  FaceRecognition() {
 			face_cascade.detectMultiScale(graySacleFrame, faces, 1.1, 3, 0, cv::Size(90, 90));
 
 			//number of faces detected
-			std::cout << faces.size() << " faces detected" << std::endl;
+			//std::cout << faces.size() << " faces detected" << std::endl;
 			std::string frameset = std::to_string(count);
 			std::string faceset = std::to_string(faces.size());
 
@@ -203,7 +201,7 @@ int  FaceRecognition() {
 			putText(original, "Person: " + Pname, cv::Point(30, 90), CV_FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(0, 255, 0), 1.0);
 			//display to the winodw
 			imshow(window, original);
-
+			
 			//cout << "model infor " << model->getDouble("threshold") << endl;
 
 		}
