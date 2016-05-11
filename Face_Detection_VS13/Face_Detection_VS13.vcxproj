@@ -88,7 +88,6 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Recognition_Controller.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StaffMember.h" />
     <ClInclude Include="StaffMemberForm.h">
@@ -110,7 +109,6 @@
     <ClCompile Include="MyForm.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="Recognition_Controller.cpp" />
     <ClCompile Include="StaffMember.cpp" />
     <ClCompile Include="StaffMemberForm.cpp" />
   </ItemGroup>

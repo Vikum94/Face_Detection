@@ -42,20 +42,17 @@
     <ClInclude Include="MobileDevice.h">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="FaceRec.h">
-      <Filter>model</Filter>
-    </ClInclude>
     <ClInclude Include="common.h">
       <Filter>model</Filter>
     </ClInclude>
     <ClInclude Include="Controller.h">
       <Filter>controller</Filter>
     </ClInclude>
-    <ClInclude Include="Recognition_Controller.h">
-      <Filter>controller</Filter>
-    </ClInclude>
     <ClInclude Include="Java.h">
       <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="FaceRec.h">
+      <Filter>controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,9 +83,6 @@
       <Filter>model</Filter>
     </ClCompile>
     <ClCompile Include="Controller.cpp">
-      <Filter>controller</Filter>
-    </ClCompile>
-    <ClCompile Include="Recognition_Controller.cpp">
       <Filter>controller</Filter>
     </ClCompile>
     <ClCompile Include="Java.cpp">

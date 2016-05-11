@@ -41,9 +41,7 @@ void MobileDevice::sendMyRequest(System::String^ identifier) {
 		{
 			Request = WebRequest::CreateHttp(PATH);
 			Request->Credentials = CredentialCache::DefaultCredentials;
-			Response = dynamic_cast<HttpWebResponse^>(Request->GetResponse());
-			//myRes = dynamic_cast<HttpListenerResponse^>(Request->GetResponse());
-			//Request->GetResponse();
+			Response = static_cast<HttpWebResponse^>(Request->GetResponse());
 			Stream1 = Response->GetResponseStream();
 			SReader = gcnew StreamReader(Stream1);
 			Responsestring = SReader->ReadToEnd();

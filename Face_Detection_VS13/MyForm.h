@@ -2,8 +2,8 @@
 #ifndef MYFORM_H
 #define MYFORM_H
 
-#include "Recognition_Controller.h"
 //#include "Controller.h"
+#include "FaceRec.h"
 #include "CustomerForm.h"
 #include "StaffMemberForm.h"
 
@@ -201,12 +201,12 @@ namespace Face_Detection_VS13 {
 	}
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		Recognition_Controller::recognize_all();
+		FaceRecognition();
 	}
 	
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		button3->Hide();
-		Recognition_Controller::train_people();
+		LBPHFaceTrainer();
 		button3->Show();
 	}
 };

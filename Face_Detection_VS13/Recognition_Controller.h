@@ -2,7 +2,7 @@
 #ifndef RECOGNITION_CONTROLLER_H
 #define RECOGNITION_CONTROLLER_H
 
-#include "FaceRec.h"
+//#include "FaceRec.h"
 
 class Recognition_Controller{
 public:
