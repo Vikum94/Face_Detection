@@ -367,9 +367,9 @@ namespace Face_Detection_VS13 {
 			Controller::add_customer(fn, ln, st, picn, privileged);
 
 			//add customer to the database
-			String^ constring = L"datasource=localhost;port=3306;username=root;password=1234";
+			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into face_detection.CustomerInfo(id,first_name,last_name,status,Picture_name,CustomerType) values('" + id + "','" + fname + "','" + lname + "','" + stat + "','" + pic + "','"+Customertype+"');", conDataBase);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into workshop.CustomerInfo(id,first_name,last_name,status,Picture_name,CustomerType) values('" + id + "','" + fname + "','" + lname + "','" + stat + "','" + pic + "','"+Customertype+"');", conDataBase);
 			MySqlDataReader^ myReader;
 
 			try{

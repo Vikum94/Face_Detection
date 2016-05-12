@@ -82,3 +82,13 @@ C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;SM14
 C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/pic1;SM1
 C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/pic2;SM2
 C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/Student;C1
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;C1
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;C1
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/dkvnld;C2
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/JKDC;C3
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/fjevbkebf;C4
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;C1
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;C2
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;C3
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;C4
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;C5
