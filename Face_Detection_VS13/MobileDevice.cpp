@@ -14,15 +14,15 @@ int MobileDevice::num = 0;
 void MobileDevice::sendMyRequest(System::String^ identifier) {
 	WebRequest^ Request;
 	HttpWebResponse^ Response;
-	//HttpListenerResponse^ myRes;
-	//Stream^ Stream1;
-	//StreamReader^ SReader;
-	//String^ Responsestring;
-	String^ PATH = "http://google." + identifier; //PATH to File on server //
+	HttpListenerResponse^ myRes;
+	Stream^ Stream1;
+	StreamReader^ SReader;
+	String^ Responsestring;
+	String^ PATH = "http://192.168.43.140:8080/blink?f=" + identifier; //PATH to File on server //
 	int CONN;
 
 	Ping ^pingSender = gcnew Ping;
-	PingReply ^ reply = pingSender->Send("www.google.com");
+	PingReply ^ reply = pingSender->Send("192.168.43.140");
 
 	if (reply->Status == IPStatus::Success)
 	{
@@ -40,14 +40,15 @@ void MobileDevice::sendMyRequest(System::String^ identifier) {
 		try
 		{
 			Request = WebRequest::CreateHttp(PATH);
+			Request->Timeout = 20000;
 			Request->Credentials = CredentialCache::DefaultCredentials;
 			Response = static_cast<HttpWebResponse^>(Request->GetResponse());
-			//Stream1 = Response->GetResponseStream();
-			//SReader = gcnew StreamReader(Stream1);
-			//Responsestring = SReader->ReadToEnd();
+			Stream1 = Response->GetResponseStream();
+			SReader = gcnew StreamReader(Stream1);
+			Responsestring = SReader->ReadToEnd();
 			Console::WriteLine("Data from remote server:\n");
-			//SReader->Close();
-			//Stream1->Close();
+			SReader->Close();
+			Stream1->Close();
 			Response->Close();
 		}
 		catch (std::exception& e){

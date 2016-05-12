@@ -15,7 +15,7 @@ int main(){
 	MyForm^ form1 = gcnew MyForm();
 	form1->ShowDialog();
 	//MobileDevice mb = MobileDevice();
-	//mb.sendMyRequest("com");
+	//mb.sendMyRequest("C1");
 	
 	return 0;
 }
