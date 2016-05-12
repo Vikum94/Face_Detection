@@ -17,6 +17,7 @@ namespace Face_Detection_VS13 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Summary for MyForm
@@ -213,6 +214,31 @@ namespace Face_Detection_VS13 {
 		button3->Show();
 	}
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(id) FROM workshop.CustomerInfo", conDataBase);
+	MySqlDataReader^ myReader;
+	conDataBase->Open();
+	myReader = cmdDataBase->ExecuteReader();
+	while (myReader->Read())
+	{
+		//fill in the textbox you want. 
+		cout << myReader->GetChar(0) << endl;
+	}
+	
+	/*
+	MySqlConnection^ Cn = new MySqlConnection("Data Source = .;Database = WorkNotes;Uid = sa;Pwd  = ;");
+	MySqlCommand Cmd = Cn.CreateCommand();
+	Cmd.CommandText = "select * from rrv where id=(SELECT MAX(id)  FROM rrv";
+	Cn.Open();
+	SqlDataReader Rdr = Cmd.ExecuteReader();
+	while (Rdr.Read())
+	{
+		//fill in the textbox you want.                  
+	}
+	Rdr.Close();
+	Cn.Close();
+	*/
 }
 };
 }
