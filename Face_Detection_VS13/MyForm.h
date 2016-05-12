@@ -164,7 +164,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 18);
+			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->ClientSize = System::Drawing::Size(427, 368);
@@ -179,6 +179,7 @@ namespace Face_Detection_VS13 {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
 			this->Text = L"Smart Face Recognizer";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -209,6 +210,8 @@ namespace Face_Detection_VS13 {
 		LBPHFaceTrainer();
 		button3->Show();
 	}
+private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 }
 #endif

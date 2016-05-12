@@ -1,9 +1,9 @@
 #pragma once
 #ifndef CUSTOMERFORM_H
 #define CUSTOMERFORM_H
-
+#include <iostream>
 #include"Controller.h"
-
+using namespace std;
 namespace Face_Detection_VS13 {
 
 	using namespace System;
@@ -12,6 +12,7 @@ namespace Face_Detection_VS13 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 	//using namespace std;
 
 	/// <summary>
@@ -330,16 +331,26 @@ namespace Face_Detection_VS13 {
 #pragma endregion
 	
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (checkBox1->Enabled && checkBox2->Enabled){
+		if ((!checkBox1->Enabled) && (!checkBox2->Enabled)){
 			MessageBox::Show("Please select a Customer Type");
 		}
 		else{
-			label6->Text = "C" + (Controller::get_total_customers() + 1).ToString();
+			String^ Customertype;
+			if (checkBox1->Enabled){
+				Customertype = "Privilege";
+			}
+			else{
+				Customertype = "Troublemaker";
+			}
+			String^ id = "C" + (Controller::get_total_customers() + 1).ToString();
+			label6->Text = id;
 
 			String^ fname = textBox1->Text;
 			String^ lname = textBox2->Text;
 			String^ stat = textBox3->Text;
 			String^ pic = textBox4->Text;
+			bool^ privil = this->checkBox1->Enabled;
+			bool^ trou = this->checkBox2->Enabled;
 
 			std::string fn;
 			MarshalString(fname, fn);
@@ -351,6 +362,26 @@ namespace Face_Detection_VS13 {
 			MarshalString(pic, picn);
 
 			Controller::add_customer(fn, ln, st, picn, privileged);
+
+			//add customer to the database
+			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into workshop.CustomerInfo(id,first_name,last_name,status,Picture_name,CustomerType) values('" + id + "','" + fname + "','" + lname + "','" + stat + "','" + pic + "','"+Customertype+"');", conDataBase);
+			MySqlDataReader^ myReader;
+
+			try{
+				conDataBase->Open();
+				myReader = cmdDataBase->ExecuteReader();
+
+				while (myReader->Read()){
+
+				}
+
+
+			}
+			catch (Exception^ ex){
+				MessageBox::Show(ex->Message);
+			}
 
 			textBox1->Clear();
 			textBox2->Clear();
