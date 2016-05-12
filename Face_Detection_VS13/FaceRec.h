@@ -11,7 +11,16 @@
 #pragma once
 #ifndef FACEREC_H
 #define FACEREC_H
+
 #include "common.h"
+#include <ctime>
+
+bool running = true;
+time_t current = time(0);
+std::vector<int> detected_list;
+std::vector<time_t> time_list;
+
+
 void dbread(const std::string& filename, std::vector<cv::Mat>& images, std::vector<int>& labels, char separator = ';') {
 	std::ifstream file(filename.c_str(), std::ifstream::in);
 
@@ -107,7 +116,7 @@ int  FaceRecognition() {
 	cv::namedWindow(window, 1);
 	long count = 0;
 
-	while (count<100)
+	while (running)
 	{
 		std::vector<cv::Rect> faces;
 		cv::Mat frame;
@@ -159,12 +168,35 @@ int  FaceRecognition() {
 				int label = -1; double confidence = 0;
 				model->predict(face_resized, label, confidence);
 
-				std::cout << " confidencde " << confidence << std::endl;
-				std::cout << " label " << label << std::endl;
+				//std::cout << " confidencde " << confidence << std::endl;
+				//std::cout << " label " << label << std::endl;
 				//drawing green rectagle in recognize face
 				cv::rectangle(original, face_i, CV_RGB(0, 255, 0), 1);
 				std::string text = "Detected";
-				if (label == 10 && confidence<900) {
+				
+				time_t rawtime;
+				struct tm * timeinfo;
+				time(&rawtime);
+				timeinfo = localtime(&rawtime);
+				timeinfo->tm_sec = 15;
+				
+				if (std::find(detected_list.begin(), detected_list.end(), label) != detected_list.end()){
+					if (difftime(time(0), time_list.at(0)) < mktime(timeinfo)) {
+						std::cout << "test test test" << std::endl;
+						//continue;
+					}
+					else{
+						detected_list.erase(detected_list.begin());
+						time_list.erase(time_list.begin());
+						std::cout << "no no no" << std::endl;
+					}
+				}
+				else {
+					detected_list.push_back(label);
+					time_list.push_back(time(0));
+					std::cout << "label"<<label<<std::endl;
+				}
+				/*if (label == 10 && confidence<900) {
 					//string text = format("Person is  = %d", label);
 					Pname = "Vajira";
 					continue;
@@ -187,7 +219,7 @@ int  FaceRecognition() {
 				else {
 					Pname = "unknown";
 					continue;
-				}
+				}*/
 
 				int pos_x = std::max(face_i.tl().x - 10, 0);
 				int pos_y = std::max(face_i.tl().y - 10, 0);
