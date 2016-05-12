@@ -125,7 +125,7 @@ namespace Face_Detection_VS13 {
 			this->label1->Location = System::Drawing::Point(17, 55);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(75, 18);
+			this->label1->Size = System::Drawing::Size(93, 23);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"First Name";
 			// 
@@ -136,7 +136,7 @@ namespace Face_Detection_VS13 {
 			this->textBox2->Location = System::Drawing::Point(141, 96);
 			this->textBox2->Margin = System::Windows::Forms::Padding(4);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(132, 26);
+			this->textBox2->Size = System::Drawing::Size(132, 30);
 			this->textBox2->TabIndex = 2;
 			// 
 			// label2
@@ -147,7 +147,7 @@ namespace Face_Detection_VS13 {
 			this->label2->Location = System::Drawing::Point(17, 100);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(72, 18);
+			this->label2->Size = System::Drawing::Size(90, 23);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Last Name";
 			// 
@@ -158,7 +158,7 @@ namespace Face_Detection_VS13 {
 			this->textBox3->Location = System::Drawing::Point(141, 140);
 			this->textBox3->Margin = System::Windows::Forms::Padding(4);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(132, 26);
+			this->textBox3->Size = System::Drawing::Size(132, 30);
 			this->textBox3->TabIndex = 4;
 			// 
 			// textBox4
@@ -168,7 +168,7 @@ namespace Face_Detection_VS13 {
 			this->textBox4->Location = System::Drawing::Point(141, 184);
 			this->textBox4->Margin = System::Windows::Forms::Padding(4);
 			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(132, 26);
+			this->textBox4->Size = System::Drawing::Size(132, 30);
 			this->textBox4->TabIndex = 5;
 			// 
 			// label3
@@ -179,7 +179,7 @@ namespace Face_Detection_VS13 {
 			this->label3->Location = System::Drawing::Point(17, 144);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(46, 18);
+			this->label3->Size = System::Drawing::Size(58, 23);
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Status";
 			// 
@@ -191,7 +191,7 @@ namespace Face_Detection_VS13 {
 			this->label4->Location = System::Drawing::Point(17, 188);
 			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(92, 18);
+			this->label4->Size = System::Drawing::Size(113, 23);
 			this->label4->TabIndex = 7;
 			this->label4->Text = L"Picture Name";
 			// 
@@ -219,6 +219,7 @@ namespace Face_Detection_VS13 {
 			this->button2->TabIndex = 9;
 			this->button2->Text = L"Edit";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &CustomerForm::button2_Click);
 			// 
 			// button3
 			// 
@@ -240,7 +241,7 @@ namespace Face_Detection_VS13 {
 			this->label5->Location = System::Drawing::Point(17, 12);
 			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(21, 18);
+			this->label5->Size = System::Drawing::Size(28, 23);
 			this->label5->TabIndex = 12;
 			this->label5->Text = L"ID";
 			// 
@@ -252,7 +253,7 @@ namespace Face_Detection_VS13 {
 			this->checkBox1->Location = System::Drawing::Point(141, 242);
 			this->checkBox1->Margin = System::Windows::Forms::Padding(4);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(90, 22);
+			this->checkBox1->Size = System::Drawing::Size(107, 27);
 			this->checkBox1->TabIndex = 13;
 			this->checkBox1->Text = L"Privileged";
 			this->checkBox1->UseVisualStyleBackColor = true;
@@ -266,7 +267,7 @@ namespace Face_Detection_VS13 {
 			this->checkBox2->Location = System::Drawing::Point(295, 242);
 			this->checkBox2->Margin = System::Windows::Forms::Padding(4);
 			this->checkBox2->Name = L"checkBox2";
-			this->checkBox2->Size = System::Drawing::Size(113, 22);
+			this->checkBox2->Size = System::Drawing::Size(138, 27);
 			this->checkBox2->TabIndex = 14;
 			this->checkBox2->Text = L"Troublemaker";
 			this->checkBox2->UseVisualStyleBackColor = true;
@@ -294,13 +295,13 @@ namespace Face_Detection_VS13 {
 			this->label6->Location = System::Drawing::Point(137, 12);
 			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(23, 18);
+			this->label6->Size = System::Drawing::Size(30, 23);
 			this->label6->TabIndex = 16;
 			this->label6->Text = L"C1";
 			// 
 			// CustomerForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 18);
+			this->AutoScaleDimensions = System::Drawing::SizeF(10, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(539, 359);
 			this->Controls->Add(this->label6);
@@ -331,7 +332,7 @@ namespace Face_Detection_VS13 {
 #pragma endregion
 	
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		if ((!checkBox1->Enabled) && (!checkBox2->Enabled)){
+		if ((checkBox1->Enabled) && (checkBox2->Enabled)){
 			MessageBox::Show("Please select a Customer Type");
 		}
 		else{
@@ -416,6 +417,8 @@ namespace Face_Detection_VS13 {
 		badCustomer = true;
 		checkBox1->Enabled = false;
 	}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 
 }

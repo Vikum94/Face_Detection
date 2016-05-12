@@ -11,6 +11,7 @@ namespace Face_Detection_VS13 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Summary for StaffMemberForm
@@ -294,7 +295,8 @@ namespace Face_Detection_VS13 {
 		String^ lname = textBox2->Text;
 		String^ level = textBox3->Text;
 		String^ pic = textBox4->Text;
-
+		String^ id = "SM" + (Controller::get_total_staffMembers() + 1).ToString();
+		label6->Text = id;
 		std::string fn;
 		MarshalString(fname, fn);
 		std::string ln;
@@ -304,13 +306,35 @@ namespace Face_Detection_VS13 {
 		std::string picn;
 		MarshalString(pic, picn);
 
+
 		Controller::add_staffMember(fn, ln, lvl, picn);
+		
+		//add customer to the database
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into workshop.StaffInfo(id,first_name,last_name,EmployeeLevel,Picture_name) values('" +id+ "','" + fname + "','" + lname + "','" +level+ "','" + pic + "');", conDataBase);
+		MySqlDataReader^ myReader;
+
+		try{
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read()){
+
+			}
+
+
+		}
+		catch (Exception^ ex){
+			MessageBox::Show(ex->Message);
+		}
+
 		
 		textBox1->Clear();
 		textBox2->Clear();
 		textBox3->Clear();
 		textBox4->Clear();
-		label6->Text = "SM" + (Controller::get_total_staffMembers() + 1).ToString();
+		
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Hide();
