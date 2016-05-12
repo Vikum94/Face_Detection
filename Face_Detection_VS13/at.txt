@@ -81,3 +81,4 @@ C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;SM13
 C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/;SM14
 C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/pic1;SM1
 C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/pic2;SM2
+C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/Student;C1

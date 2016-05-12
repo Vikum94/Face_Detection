@@ -16,7 +16,7 @@ StaffMember::StaffMember(string firstName, string lastName, string employeeLevel
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->employeeLevel = employeeLevel;
-	this->idNumber = "SM" + to_string(StaffMember::totalStaff);
+	this->idNumber = "SM" + to_string(StaffMember::totalStaff+100);
 	this->picturePath = picturePath;
 	//StaffMember::staffList.push_back(idNumber);
 
