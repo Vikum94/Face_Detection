@@ -4,7 +4,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
-
+#include <vector>
 //file handling
 #include <fstream>
 #include <sstream>

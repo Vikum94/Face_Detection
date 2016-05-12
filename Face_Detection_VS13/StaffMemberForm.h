@@ -259,7 +259,7 @@ namespace Face_Detection_VS13 {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(35, 18);
 			this->label6->TabIndex = 25;
-			this->label6->Text = L"SM1";
+			this->label6->Text = L"SM101";
 			// 
 			// StaffMemberForm
 			// 
@@ -296,7 +296,7 @@ namespace Face_Detection_VS13 {
 		String^ fname = textBox1->Text;
 		String^ lname = textBox2->Text;
 		String^ level = textBox3->Text;
-		String^ pic = textBox4->Text;
+		String^ pic_name = textBox4->Text;
 
 		std::string fn;
 		MarshalString(fname, fn);
@@ -304,16 +304,16 @@ namespace Face_Detection_VS13 {
 		MarshalString(lname, ln);
 		std::string lvl;
 		MarshalString(level, lvl);
-		std::string picn;
-		MarshalString(pic, picn);
+		std::string pic;
+		MarshalString(pic_name, pic);
 
-		Controller::add_staffMember(fn, ln, lvl, picn);
+		Controller::add_staffMember(fn, ln, lvl, pic);
 		
 		textBox1->Clear();
 		textBox2->Clear();
 		textBox3->Clear();
 		textBox4->Clear();
-		label6->Text = "SM" + (Controller::get_total_staffMembers() + 1).ToString();
+		label6->Text = "SM" + (Controller::get_total_staffMembers()+101).ToString();
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Hide();

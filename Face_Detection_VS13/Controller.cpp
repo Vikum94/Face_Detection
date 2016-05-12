@@ -1,17 +1,21 @@
 #include "Controller.h"
 
-std::vector<std::string> Controller::id_list;
+std::vector<int> Controller::id_list;
 
 void Controller::add_customer(std::string first_name, std::string last_name, std::string pic_name, std::string status, bool is_privileged){
 	Customer new_customer = Customer(first_name, last_name, pic_name);
 	new_customer.setStatus(status, is_privileged);
-	id_list.push_back(new_customer.getIdNumber());
-
+	id_list.push_back(atoi(new_customer.getIdNumber().substr(1).c_str()));
+	if (is_privileged)
+		MobileDevice::sendMyRequest(gcnew System::String(("RC" + first_name + "*" + last_name).c_str()));
+	else
+		MobileDevice::sendMyRequest(gcnew System::String(("RT" + first_name + "*" + last_name).c_str()));
 }
 
 void Controller::add_staffMember(std::string first_name, std::string last_name, std::string employee_level, std::string pic_name){
 	StaffMember new_staffMember = StaffMember(first_name, last_name, employee_level, pic_name);
-	id_list.push_back(new_staffMember.getIdNumber());
+	id_list.push_back(atoi(new_staffMember.getIdNumber().substr(2).c_str()));
+	MobileDevice::sendMyRequest(gcnew System::String(("RS" + first_name + "*" + last_name).c_str()));
 }
 
 int Controller::get_total_customers(){
@@ -22,22 +26,13 @@ int Controller::get_total_staffMembers(){
 	return StaffMember::getTotalStaff();
 }
 
-
-
-/*Controller::Controller(std::string first_name, std::string last_name, std::string status, std::string pic_name, bool is_privileged){
-	this->first_name = first_name;
-	this->last_name = last_name;
-	this->status = status;
-	this->pic_name = pic_name;
-	this->is_privileged = is_privileged;
+void Controller::clear_all(){
+	MobileDevice::sendMyRequest("I");
 }
 
-Controller::Controller(std::string first_name, std::string last_name, std::string employee_level, std::string pic_name){
-	this->first_name = first_name;
-	this->last_name = last_name;
-	this->employee_level = employee_level;
-	this->pic_name = pic_name;
-}*/
+void Controller::send_detected(){
+
+}
 
 Controller::Controller(){
 }

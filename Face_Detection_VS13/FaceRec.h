@@ -13,8 +13,11 @@
 #define FACEREC_H
 #include "common.h"
 #include "Controller.h"
+#include <ctime>
 
 bool running = true;
+time_t current = time(0);
+std::vector<int> detected_list;
 
 void dbread(const std::string& filename, std::vector<cv::Mat>& images, std::vector<int>& labels, char separator = ';') {
 	std::ifstream file(filename.c_str(), std::ifstream::in);
@@ -102,7 +105,7 @@ int  FaceRecognition() {
 
 	double fps = cap.get(CV_CAP_PROP_FPS);
 	std::cout << " Frames per seconds " << fps << std::endl;
-	cv::namedWindow(window, 1);
+	//cv::namedWindow(window, 1);
 	long count = 0;
 
 	while (running)
@@ -162,7 +165,18 @@ int  FaceRecognition() {
 				//drawing green rectagle in recognize face
 				cv::rectangle(original, face_i, CV_RGB(0, 255, 0), 1);
 				std::string text = "Detected";
-				if (label == 10 && confidence<900) {
+				
+				if (confidence <1000){
+					/*std::ofstream file2;
+					file2.open("recognized.txt", std::ios_base::app);
+					file2 << std::to_string(label) + "\n";
+					file2.close();*/
+					if (std::find(detected_list.begin(), detected_list.end(), label) != detected_list.end()){
+						//
+					}
+				}
+				
+				/*if (label == 10 && confidence<900) {
 					//string text = format("Person is  = %d", label);
 					Pname = "Vajira";
 					continue;
@@ -185,7 +199,7 @@ int  FaceRecognition() {
 				else {
 					Pname = "unknown";
 					continue;
-				}
+				}*/
 
 				int pos_x = std::max(face_i.tl().x - 10, 0);
 				int pos_y = std::max(face_i.tl().y - 10, 0);

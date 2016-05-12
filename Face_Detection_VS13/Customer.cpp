@@ -33,7 +33,7 @@ Customer::Customer(std::string firstName, std::string surname, std::string pictu
 	//Customer::customerList.push_back(idNumber);
 
 	std::ofstream file;
-	file.open("at.txt", std::ios_base::app);
+	file.open("C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/at.txt", std::ios_base::app);
 	file << "C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/" + picturePath + ";" + idNumber + "\n";
 	file.close();
 }

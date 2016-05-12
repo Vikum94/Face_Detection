@@ -7,7 +7,7 @@
 
 class MobileDevice{
 public:
-	void sendMyRequest(System::String^);
+	static void sendMyRequest(System::String^);
 	static int num;
 
 	MobileDevice();

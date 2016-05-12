@@ -337,8 +337,6 @@ namespace Face_Detection_VS13 {
 			MessageBox::Show("Please select a Customer Type");
 		}
 		else{
-			label6->Text = "C" + (Controller::get_total_customers() + 1).ToString();
-
 			String^ fname = textBox1->Text;
 			String^ lname = textBox2->Text;
 			String^ stat = textBox3->Text;
@@ -352,9 +350,11 @@ namespace Face_Detection_VS13 {
 			MarshalString(stat, st);
 			std::string picn;
 			MarshalString(pic, picn);
-
+			
 			Controller::add_customer(fn, ln, st, picn, privileged);
 
+			label6->Text = "C" + (Controller::get_total_customers() + 1).ToString();
+			
 			textBox1->Clear();
 			textBox2->Clear();
 			textBox3->Clear();

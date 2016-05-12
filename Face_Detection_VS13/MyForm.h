@@ -215,7 +215,6 @@ namespace Face_Detection_VS13 {
 	}
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 		running = false();
-		
 	}
 };
 }
