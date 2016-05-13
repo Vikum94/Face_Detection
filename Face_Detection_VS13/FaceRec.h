@@ -182,19 +182,20 @@ int  FaceRecognition() {
 				
 				if (std::find(detected_list.begin(), detected_list.end(), label) != detected_list.end()){
 					if (difftime(time(0), time_list.at(0)) < 15) {
-						std::cout << "test test test" << std::endl;
-						//continue;
+						//std::cout << "good good good" << std::endl;
+						continue;
 					}
 					else{
 						detected_list.erase(detected_list.begin());
 						time_list.erase(time_list.begin());
-						std::cout << "no no no" << std::endl;
+						//std::cout << "no no no" << std::endl;
+						//running = false;
 					}
 				}
 				else {
 					detected_list.push_back(label);
 					time_list.push_back(time(0));
-					std::cout << "label"<<label<<std::endl;
+					std::cout << "label ********************** "<<label<<std::endl;
 				}
 				/*if (label == 10 && confidence<900) {
 					//string text = format("Person is  = %d", label);
