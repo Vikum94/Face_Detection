@@ -3,6 +3,7 @@
 #define CUSTOMERFORM_H
 #include <iostream>
 #include"Controller.h"
+#include <msclr\marshal_cppstd.h>
 using namespace std;
 namespace Face_Detection_VS13 {
 
@@ -298,7 +299,22 @@ namespace Face_Detection_VS13 {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(23, 18);
 			this->label6->TabIndex = 16;
-			this->label6->Text = L"C1";
+
+			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(id) FROM workshop.CustomerInfo", conDataBase);
+			MySqlDataReader^ myReader;
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+			String^ content;
+			std::string inKey;
+			while (myReader->Read())
+			{
+				content = myReader->GetString(0);
+				inKey = msclr::interop::marshal_as<std::string>(content);
+			}
+
+			this->label6->Text = L"'"+content+"'";
 			// 
 			// CustomerForm
 			// 

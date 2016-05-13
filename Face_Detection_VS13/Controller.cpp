@@ -10,6 +10,10 @@ void Controller::add_staffMember(std::string first_name, std::string last_name, 
 	StaffMember new_staffMember = StaffMember(first_name, last_name, employee_level, pic_name);
 }
 
+void Controller::set_total_customers(int total_customers){
+	Customer::setTotalCustomers(total_customers);
+}
+
 int Controller::get_total_customers(){
 	return Customer::getTotalCustomers();
 }
