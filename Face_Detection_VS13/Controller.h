@@ -22,6 +22,7 @@ public:
 	static void add_customer(std::string, std::string, std::string, std::string, bool);
 	//void add_customer();
 	static int get_total_customers();
+	static void set_total_customers(int);
 
 	static void add_staffMember(std::string, std::string, std::string, std::string);
 	//void add_staffMember();

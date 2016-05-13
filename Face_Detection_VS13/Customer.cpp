@@ -8,6 +8,7 @@ void Customer::setFirstName(std::string firstName) { this->firstName = firstName
 void Customer::setsurname(std::string surname) { this->surname = surname; }
 void Customer::setPicturePath(std::string picturePath) { this->picturePath = picturePath; }
 void Customer::setId(std::string id){ this->idNumber = id; }
+void Customer::setTotalCustomers(int total_customers){ Customer::totalCustomers = total_customers; }
 	
 std::string Customer::getFisrstName() { return firstName; }
 std::string Customer::getSurname() { return surname; }

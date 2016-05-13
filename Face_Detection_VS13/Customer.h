@@ -38,6 +38,7 @@ public:
 	void setStatus(std::string, bool);
 	void setPicturePath(std::string);
 	void setId(std::string);
+	static void setTotalCustomers(int);
 
 	bool registerCustomer();
 
