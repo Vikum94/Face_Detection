@@ -154,7 +154,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// button6
 			// 
-			this->button6->BackColor = System::Drawing::Color::Beige;
+			this->button6->BackColor = System::Drawing::Color::OrangeRed;
 			this->button6->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button6->Location = System::Drawing::Point(145, 242);
@@ -162,8 +162,9 @@ namespace Face_Detection_VS13 {
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(141, 39);
 			this->button6->TabIndex = 5;
-			this->button6->Text = L"Camera Feed";
+			this->button6->Text = L"Stop";
 			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
 			// MyForm
 			// 
@@ -206,6 +207,7 @@ namespace Face_Detection_VS13 {
 	}
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		running = true;
 		FaceRecognition();
 	}
 	
@@ -231,6 +233,9 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 	Cn.Close();
 	*/
 }
+	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+		running = false;
+	}
 };
 }
 #endif

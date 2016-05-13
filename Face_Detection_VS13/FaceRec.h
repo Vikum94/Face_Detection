@@ -15,7 +15,7 @@
 #include "common.h"
 #include <ctime>
 
-bool running = true;
+bool running = false;
 time_t current = time(0);
 std::vector<int> detected_list;
 std::vector<time_t> time_list;
