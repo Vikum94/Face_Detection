@@ -7,7 +7,7 @@
 #include <string>*/
 //using namespace std;
 //using namespace cv;
-
+//"http://192.168.43.140:4000/blink?f=C1"
 #pragma once
 #ifndef FACEREC_H
 #define FACEREC_H
@@ -181,7 +181,7 @@ int  FaceRecognition() {
 				timeinfo->tm_sec = 15;
 				
 				if (std::find(detected_list.begin(), detected_list.end(), label) != detected_list.end()){
-					if (difftime(time(0), time_list.at(0)) < mktime(timeinfo)) {
+					if (difftime(time(0), time_list.at(0)) < 15) {
 						std::cout << "test test test" << std::endl;
 						//continue;
 					}
