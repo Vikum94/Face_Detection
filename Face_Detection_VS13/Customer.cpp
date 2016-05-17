@@ -1,4 +1,14 @@
 #include "Customer.h"
+#include <msclr\marshal_cppstd.h>
+
+using namespace std;
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::Collections;
+using namespace System::Windows::Forms;
+using namespace System::Data;
+using namespace System::Drawing;
+using namespace MySql::Data::MySqlClient;
 
 int Customer::totalCustomers=0;
 int Customer::totalBadCustomers = 0;
@@ -9,12 +19,94 @@ void Customer::setsurname(std::string surname) { this->surname = surname; }
 void Customer::setPicturePath(std::string picturePath) { this->picturePath = picturePath; }
 void Customer::setId(std::string id){ this->idNumber = id; }
 void Customer::setTotalCustomers(int total_customers){ Customer::totalCustomers = total_customers; }
+void Customer::setCustomerType(std::string cType){ this->customerType = cType; }
 	
 std::string Customer::getFisrstName() { return firstName; }
 std::string Customer::getSurname() { return surname; }
 std::string Customer::getIdNumber() { return idNumber; }
 std::string Customer::getStatus() { return this->status; }
 int Customer::getTotalCustomers(){ return Customer::totalCustomers; }
+std::string Customer::getPicturePath(){ return picturePath; }
+std::string Customer::getCustomerType(){ return customerType; }
+
+void Customer::setTotalCustomersByDataBase(){
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(entry) FROM workshop.CustomerInfo", conDataBase);
+	MySqlDataReader^ myReader;
+	conDataBase->Open();
+	String^ content;
+	std::string inKey;
+	try{
+		myReader = cmdDataBase->ExecuteReader();
+		
+		while (myReader->Read())
+		{
+			content = myReader->GetString(0);
+			inKey = msclr::interop::marshal_as<std::string>(content);
+
+		}
+	}
+	catch (Exception^ ex){
+		inKey = "0";
+	}
+	//inKey.erase(0, 1);
+	cout << "cuhcufh " << inKey << endl;
+	int id = std::stoi(inKey);
+	cout << "setting total customers : " << id << endl;
+	Customer::setTotalCustomers(id);
+}
+
+void Customer::setIdByDataBase(){
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(entry) FROM workshop.CustomerInfo", conDataBase);
+	MySqlDataReader^ myReader;
+	conDataBase->Open();
+	
+	String^ content;
+	std::string inKey;
+	try{
+		myReader = cmdDataBase->ExecuteReader();
+		while (myReader->Read())
+		{
+			content = myReader->GetString(0);
+			inKey = msclr::interop::marshal_as<std::string>(content);
+		}
+	}
+	catch (Exception^ e){
+		inKey = "0";
+	}
+	//inKey.erase(0, 1);
+	int num = std::stoi(inKey);
+	num += 1;
+	Customer::setId("C"+ std::to_string(num));
+}
+
+void Customer::addToDatabase(){
+	//add customer to the database
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into workshop.CustomerInfo(id,first_name,last_name,status,Picture_name,CustomerType) values('" + 
+		gcnew String(Customer::getIdNumber().c_str()) + "','" +gcnew String(Customer::getFisrstName().c_str()) + "','" + 
+		gcnew String(Customer::getSurname().c_str()) + "','" + gcnew String(Customer::getStatus().c_str()) + "','" + 
+		gcnew String(Customer::getPicturePath().c_str()) + "','" + gcnew String(Customer::getCustomerType().c_str()) + "');", conDataBase);
+	MySqlDataReader^ myReader;
+
+	try{
+		conDataBase->Open();
+		myReader = cmdDataBase->ExecuteReader();
+
+		while (myReader->Read()){
+
+		}
+
+
+	}
+	catch (Exception^ ex){
+		MessageBox::Show(ex->Message);
+	}
+}
 
 void Customer::setStatus(std::string status, bool isPrivileged) {
 	this->status = status;

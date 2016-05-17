@@ -2,9 +2,11 @@
 #ifndef STAFFMEMBERFORM_H
 #define STAFFMEMBERFORM_H
 
+#include <msclr\marshal_cppstd.h>
+
 #include "Controller.h"
 namespace Face_Detection_VS13 {
-
+	//using namespace std;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -251,7 +253,8 @@ namespace Face_Detection_VS13 {
 			this->button4->Click += gcnew System::EventHandler(this, &StaffMemberForm::button4_Click);
 			// 
 			// label6
-			// 
+			//
+
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -260,7 +263,31 @@ namespace Face_Detection_VS13 {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(35, 18);
 			this->label6->TabIndex = 25;
-			this->label6->Text = L"SM101";
+			/*
+			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+			MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT COUNT(*) FROM workshop.StaffInfo", conDataBase);
+			//MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT MAX(id) FROM workshop.StaffInfo", conDataBase);
+			MySqlDataReader^ myReader1;
+			MySqlDataReader^ myReader2;
+			conDataBase->Open();
+			myReader1 = cmdDataBase1->ExecuteReader();
+			//myReader2 = cmdDataBase2->ExecuteReader();
+			//myReader1->Read();
+			String^ content;
+			String^ str_ID;
+			std::string init_ID;
+			myReader1->Read();
+			content = myReader1->GetString(0);
+			init_ID = msclr::interop::marshal_as<std::string>(content);
+			if (init_ID == "0"){
+				cout << "hfeuwfhuefh  " << init_ID << endl;
+				str_ID = "SM1";
+			}
+			*/
+			std::string noc = std::to_string(Controller::get_total_staffMembers() + 1);
+			noc = "SM" + noc;
+			this->label6->Text = L"'" + gcnew String(noc.c_str()) + "'";
 			// 
 			// StaffMemberForm
 			// 
@@ -293,12 +320,15 @@ namespace Face_Detection_VS13 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+
 		String^ fname = textBox1->Text;
 		String^ lname = textBox2->Text;
 		String^ level = textBox3->Text;
 		String^ pic = textBox4->Text;
-		String^ id = "SM" + (Controller::get_total_staffMembers() + 1).ToString();
-		label6->Text = id;
+		//String^ id = "SM" + (Controller::get_total_staffMembers() + 1).ToString();
+		//label6->Text = id;
 		std::string fn;
 		MarshalString(fname, fn);
 		std::string ln;
@@ -309,10 +339,10 @@ namespace Face_Detection_VS13 {
 		MarshalString(pic, picn);
 
 
-		Controller::add_staffMember(fn, ln, lvl, picn);
-		
+		//Controller::add_staffMember(fn, ln, lvl, picn);
+		/*
 		//add customer to the database
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into face_detection.StaffInfo(id,first_name,last_name,EmployeeLevel,Picture_name) values('" +id+ "','" + fname + "','" + lname + "','" +level+ "','" + pic + "');", conDataBase);
 		MySqlDataReader^ myReader;
@@ -330,7 +360,11 @@ namespace Face_Detection_VS13 {
 		catch (Exception^ ex){
 			MessageBox::Show(ex->Message);
 		}
+		*/
 
+		Controller::add_staffMember(fn, ln, lvl, picn);
+		String^ id = "SM" + (Controller::get_total_staffMembers() + 1).ToString();
+		label6->Text = id;
 		
 		textBox1->Clear();
 		textBox2->Clear();

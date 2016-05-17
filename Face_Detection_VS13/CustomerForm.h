@@ -299,7 +299,9 @@ namespace Face_Detection_VS13 {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(23, 18);
 			this->label6->TabIndex = 16;
-
+	
+			//generate existing id
+			/*
 			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(id) FROM workshop.CustomerInfo", conDataBase);
@@ -313,8 +315,10 @@ namespace Face_Detection_VS13 {
 				content = myReader->GetString(0);
 				inKey = msclr::interop::marshal_as<std::string>(content);
 			}
-
-			this->label6->Text = L"'"+content+"'";
+			*/
+			std::string noc = std::to_string(Controller::get_total_customers()+1);
+			noc = "C" + noc;
+			this->label6->Text = L"'"+gcnew String(noc.c_str())+"'";
 			// 
 			// CustomerForm
 			// 
@@ -350,6 +354,28 @@ namespace Face_Detection_VS13 {
 #pragma endregion
 	
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		/* commented
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(id) FROM workshop.CustomerInfo", conDataBase);
+		MySqlDataReader^ myReader;
+		conDataBase->Open();
+		myReader = cmdDataBase->ExecuteReader();
+		String^ content;
+		std::string inKey;
+		while (myReader->Read())
+		{
+			content = myReader->GetString(0);
+			inKey = msclr::interop::marshal_as<std::string>(content);
+
+		}
+		inKey.erase(0,1);
+		cout << "cuhcufh " << inKey << endl;
+		int id = std::stoi(inKey);
+		Controller::set_total_customers(id);
+		cout << "vbfhvbfb : " << id << endl;
+
+		*/
 		if ((checkBox1->Enabled) && (checkBox2->Enabled)){
 			MessageBox::Show("Please select a Customer Type");
 		}
@@ -361,8 +387,8 @@ namespace Face_Detection_VS13 {
 			else{
 				Customertype = "Troublemaker";
 			}
-			String^ id = "C" + (Controller::get_total_customers() + 1).ToString();
-			label6->Text = id;
+			
+
 
 			String^ fname = textBox1->Text;
 			String^ lname = textBox2->Text;
@@ -381,7 +407,10 @@ namespace Face_Detection_VS13 {
 			MarshalString(pic, picn);
 
 			Controller::add_customer(fn, ln, st, picn, privileged);
+			String^ id = "C" + (Controller::get_total_customers() + 1).ToString();
+			label6->Text = id;
 
+			/*
 			//add customer to the database
 			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
@@ -401,7 +430,7 @@ namespace Face_Detection_VS13 {
 			catch (Exception^ ex){
 				MessageBox::Show(ex->Message);
 			}
-
+			*/
 			textBox1->Clear();
 			textBox2->Clear();
 			textBox3->Clear();
@@ -411,6 +440,7 @@ namespace Face_Detection_VS13 {
 			checkBox1->Enabled = true;
 			checkBox2->Enabled = true;
 		}
+		
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Close();

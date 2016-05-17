@@ -27,6 +27,7 @@ public:
 	static void add_staffMember(std::string, std::string, std::string, std::string);
 	//void add_staffMember();
 	static int get_total_staffMembers();
+	static void set_total_staffMembers(int);
 
 
 	//Controller(std::string, std::string, std::string, std::string, bool);
