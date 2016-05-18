@@ -29,9 +29,9 @@ std::string StaffMember::getEmployeelevel(){ return employeeLevel; }
 void StaffMember::setId(std::string id){ this->idNumber = id; }
 
 void StaffMember::setIdByDatabase(){
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(entry) FROM workshop.StaffInfo", conDataBase);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(entry) FROM face_detection.StaffInfo", conDataBase);
 	MySqlDataReader^ myReader;
 	conDataBase->Open();
 
@@ -55,9 +55,9 @@ void StaffMember::setIdByDatabase(){
 }
 
 void StaffMember::setTotalStaffByDataBase(){
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(entry) FROM workshop.StaffInfo", conDataBase);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(entry) FROM face_detection.StaffInfo", conDataBase);
 	MySqlDataReader^ myReader;
 	conDataBase->Open();
 	String^ content;
@@ -76,7 +76,7 @@ void StaffMember::setTotalStaffByDataBase(){
 		inKey = "0";
 	}
 	//inKey.erase(0, 1);
-	cout << "cuhcufh " << inKey << endl;
+	//cout << "cuhcufh " << inKey << endl;
 	int id = std::stoi(inKey);
 	cout << "setting total staff : " << id << endl;
 	StaffMember::setTotalStaffMembers(id);
@@ -84,10 +84,10 @@ void StaffMember::setTotalStaffByDataBase(){
 
 void StaffMember::addToDatabase(){
 	//add staff member to the database
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into workshop.StaffInfo(id,first_name,last_name,EmployeeLevel,Picture_name) values('" + 
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into face_detection.StaffInfo(id,first_name,last_name,EmployeeLevel,Picture_name) values('" + 
 		gcnew String(StaffMember::getIdNumber().c_str()) + "','" + 
 		gcnew String(StaffMember::getFirstName().c_str()) + "','" + 
 		gcnew String(StaffMember::getSurname().c_str()) + "','" + 
@@ -121,8 +121,8 @@ StaffMember::StaffMember(string firstName, string lastName, string employeeLevel
 	//StaffMember::staffList.push_back(idNumber);
 
 	ofstream file;
-	file.open("at.txt",std::ios_base::app);
-	file << "C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/"+picturePath + ";" + idNumber+"\n";
+	file.open("C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/at.txt",std::ios_base::app);
+	file << "C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/" + picturePath + ";" + idNumber.substr(2) + "\n";
 	file.close();
 }
 

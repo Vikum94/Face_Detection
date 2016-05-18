@@ -1,19 +1,13 @@
-/*#include <iostream>
-#include "opencv2/opencv.hpp"
-
-//file handling
-#include <fstream>
-#include <sstream>
-#include <string>*/
 //using namespace std;
 //using namespace cv;
-//"http://192.168.43.140:4000/blink?f=C1"
+
 #pragma once
 #ifndef FACEREC_H
 #define FACEREC_H
 
 #include "common.h"
 #include <ctime>
+//#include "MobileDevice.h"
 
 bool running = false;
 time_t current = time(0);
@@ -102,7 +96,7 @@ int  FaceRecognition() {
 		return -1;
 	}
 
-	cv::VideoCapture cap(0);
+	cv::VideoCapture cap(1);
 	//VideoCapture cap("C:/Users/lsf-admin/Pictures/Camera Roll/video000.mp4");
 
 	if (!cap.isOpened())
@@ -192,42 +186,44 @@ int  FaceRecognition() {
 						//running = false;
 					}
 				}
-				else {
+				else if(label<100){
 					detected_list.push_back(label);
 					time_list.push_back(time(0));
 					std::cout << "label ********************** "<<label<<std::endl;
+
+					String^ constring = L"datasource=localhost;port=3306;username=root;password=1234";
+					MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+					MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT CustomerType FROM face_detection.CustomerInfo where id = C" + label, conDataBase);
+					MySqlDataReader^ myReader;
+					conDataBase->Open();
+
+					String^ content;
+					std::string inKey;
+					try{
+						myReader = cmdDataBase->ExecuteReader();
+						while (myReader->Read())
+						{
+							content = myReader->GetString(0);
+							inKey = msclr::interop::marshal_as<std::string>(content);
+						}
+						int num = std::stoi(inKey);
+						if (num = 1)
+							MobileDevice::sendMyRequest("C" + label);
+						else if (num = 0)
+							MobileDevice::sendMyRequest("T" + label);
+					}
+					catch (Exception^ e){
+						inKey = "0";
+					}
+					
 				}
-				/*if (label == 10 && confidence<900) {
-					//string text = format("Person is  = %d", label);
-					Pname = "Vajira";
-					continue;
-				}
-				if (label == 20 && confidence<1100) {
-					//string text = format("Person is  = %d", label);
-					Pname = "vik";
-					continue;
-				}
-				if (label == 30 && confidence<900) {
-					//string text = format("Person is  = %d", label);
-					Pname = "Chama";
-					continue;
-				}
-				if (label == 40 && confidence<900) {
-					//string text = format("Person is  = %d", label);
-					Pname = "Wasa";
-					continue;
-				}
-				else {
-					Pname = "unknown";
-					continue;
-				}*/
+				
 
 				int pos_x = std::max(face_i.tl().x - 10, 0);
 				int pos_y = std::max(face_i.tl().y - 10, 0);
 
 				//name the person who is in the image
 				putText(original, text, cv::Point(pos_x, pos_y), cv::FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(0, 255, 0), 1.0);
-				//cv::imwrite("E:/FDB/"+frameset+".jpg", cropImg);
 
 			}
 
@@ -242,73 +238,5 @@ int  FaceRecognition() {
 		}
 		if (cv::waitKey(30) >= 0) break;
 	}
-}/*
-void fisherFaceTrainer(){
-	//in this two vector we put the images and labes for training
-	vector<cv::Mat> images;
-	vector<int> labels;
-
-	try{
-		string filename = "C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/at.txt";
-		dbread(filename, images, labels);
-
-		cout << "size of the images is " << images.size() << endl;
-		cout << "size of the labes is " << labels.size() << endl;
-		cout << "Training begins...." << endl;
-	}
-	catch (cv::Exception& e){
-		cerr << " Error opening the file " << e.msg << endl;
-		exit(1);
-	}
-
-
-	cv::Ptr<cv::FaceRecognizer> model = cv::createFisherFaceRecognizer();
-
-	model->train(images, labels);
-	
-	//int height = images[0].rows;
-
-	//model->save("C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/fisherface.yml");
-	model->save("C:/Users/Vikum/Documents/Visual Studio 2013/Pictures/fisherface.yml");
-	cout << "Training finished...." << endl;
-
-	cv::Mat eigenvalues = model->getMat("eigenvalues");
-	// And we can do the same to display the Eigenvectors (read Eigenfaces):
-	cv::Mat W = model->getMat("eigenvectors");
-	// Get the sample mean from the training data
-	cv::Mat mean = model->getMat("mean");
-	//imshow("mean", MatNorm(mean.reshape(1, images[0].rows)));
-	//imwrite(format("%s/mean.png", output_folder.c_str()), MatNorm(mean.reshape(1, images[0].rows)));
-
-	// Display or save the first, at most 16 Fisherfaces:
-	/*for (int i = 0; i < min(16, W.cols); i++) {
-	string msg = format("Eigenvalue #%d = %.5f", i, eigenvalues.at<double>(i));
-	cout << msg << endl;
-	// get eigenvector #i
-	Mat ev = W.col(i).clone();
-	// Reshape to original size & normalize to [0...255] for imshow.
-	Mat grayscale = MatNorm(ev.reshape(1, height));
-	// Show the image & apply a Bone colormap for better sensing.
-	Mat cgrayscale;
-	applyColorMap(grayscale, cgrayscale, COLORMAP_BONE);
-	// Display or save:
-	//imshow(format("fisherface_%d", i), cgrayscale);
-	//imwrite(format("%s/fisherface_%d.png", output_folder.c_str(), i), MatNorm(cgrayscale));
-	}
-
-	// Display or save the image reconstruction at some predefined steps:
-	for (int num_component = 0; num_component < min(16, W.cols); num_component++) {
-	// Slice the Fisherface from the model:
-	Mat ev = W.col(num_component);
-	Mat projection = subspaceProject(ev, mean, images[0].reshape(1, 1));
-	Mat reconstruction = subspaceReconstruct(ev, mean, projection);
-	// Normalize the result:
-	reconstruction = MatNorm(reconstruction.reshape(1, images[0].rows));
-	// Display or save:
-	imshow(format("fisherface_reconstruction_%d", num_component), reconstruction);
-	//imwrite(format("%s/fisherface_reconstruction_%d.png", output_folder.c_str(), num_component), reconstruction);
-	}*/
-
-	/*cv::waitKey(10000);
-}*/
+}
 #endif

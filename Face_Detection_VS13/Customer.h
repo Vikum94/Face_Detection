@@ -18,7 +18,6 @@ private:
 	std::string idNumber;
 	std::string status;
 	std::string picturePath;
-	std::string customerType;
 	bool isPrivileged;
 	bool isTroubleMaker;
 	
@@ -34,9 +33,9 @@ public:
 	std::string getStatus();
 	static int getTotalCustomers();
 	std::string getPicturePath();
-	std::string getCustomerType();
+	int getCustomerType();
 
-	void setCustomerType(std::string);
+	void setCustomerType(bool);
 	void setFirstName(std::string);
 	void setsurname(std::string);
 	void setStatus(std::string, bool);

@@ -18,24 +18,24 @@ void MobileDevice::sendMyRequest(System::String^ identifier) {
 	Stream^ Stream1;
 	StreamReader^ SReader;
 	String^ Responsestring;
-	String^ PATH = "http://google." + identifier; //PATH to File on server //
-	int CONN;
+	String^ PATH = "http://192.168.43.20:8080/Id=" + identifier; //PATH to File on server //
+	bool connceted;
 
 	Ping ^pingSender = gcnew Ping;
-	PingReply ^ reply = pingSender->Send("google.com");
+	PingReply ^ reply = pingSender->Send("192.168.43.20");
 
 	if (reply->Status == IPStatus::Success)
 	{
-		CONN = 10;//The user is online, set our connection variable (CONN) to 10;
+		connceted = false;//The user is online, set our connection variable (CONN) to 10;
 		Console::WriteLine("Working.");
 	}
 	else
 	{
-		CONN = 400;//The user is offline, set our connection variable to 400;
+		connceted = true;//The user is offline, set our connection variable to 400;
 	}
 	//END
 
-	if (CONN == 10)//is the user online
+	if (connceted)//is the user online
 	{
 		try
 		{

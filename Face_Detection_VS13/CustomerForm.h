@@ -110,7 +110,7 @@ namespace Face_Detection_VS13 {
 			// textBox1
 			// 
 			this->textBox1->AccessibleDescription = L"";
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->Location = System::Drawing::Point(147, 51);
 			this->textBox1->Margin = System::Windows::Forms::Padding(4);
@@ -122,7 +122,7 @@ namespace Face_Detection_VS13 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(23, 55);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
@@ -133,7 +133,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox2->Location = System::Drawing::Point(147, 96);
 			this->textBox2->Margin = System::Windows::Forms::Padding(4);
@@ -144,7 +144,7 @@ namespace Face_Detection_VS13 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(23, 100);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
@@ -155,7 +155,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// textBox3
 			// 
-			this->textBox3->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->textBox3->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox3->Location = System::Drawing::Point(147, 140);
 			this->textBox3->Margin = System::Windows::Forms::Padding(4);
@@ -165,7 +165,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// textBox4
 			// 
-			this->textBox4->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->textBox4->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox4->Location = System::Drawing::Point(147, 184);
 			this->textBox4->Margin = System::Windows::Forms::Padding(4);
@@ -176,7 +176,7 @@ namespace Face_Detection_VS13 {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(23, 144);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
@@ -188,7 +188,7 @@ namespace Face_Detection_VS13 {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(23, 188);
 			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
@@ -199,7 +199,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// button1
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(362, 26);
 			this->button1->Margin = System::Windows::Forms::Padding(4);
@@ -212,7 +212,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(362, 71);
 			this->button2->Margin = System::Windows::Forms::Padding(4);
@@ -225,7 +225,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// button3
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button3->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->Location = System::Drawing::Point(362, 115);
 			this->button3->Margin = System::Windows::Forms::Padding(4);
@@ -238,7 +238,7 @@ namespace Face_Detection_VS13 {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(23, 12);
 			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
@@ -250,7 +250,7 @@ namespace Face_Detection_VS13 {
 			// checkBox1
 			// 
 			this->checkBox1->AutoSize = true;
-			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->checkBox1->Location = System::Drawing::Point(173, 231);
 			this->checkBox1->Margin = System::Windows::Forms::Padding(4);
@@ -264,7 +264,7 @@ namespace Face_Detection_VS13 {
 			// checkBox2
 			// 
 			this->checkBox2->AutoSize = true;
-			this->checkBox2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->checkBox2->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->checkBox2->Location = System::Drawing::Point(327, 231);
 			this->checkBox2->Margin = System::Windows::Forms::Padding(4);
@@ -277,7 +277,7 @@ namespace Face_Detection_VS13 {
 			// 
 			// button4
 			// 
-			this->button4->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button4->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button4->Location = System::Drawing::Point(362, 159);
 			this->button4->Margin = System::Windows::Forms::Padding(4);
@@ -291,7 +291,7 @@ namespace Face_Detection_VS13 {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"Calibri", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::Color::Crimson;
 			this->label6->Location = System::Drawing::Point(143, 12);
@@ -300,25 +300,9 @@ namespace Face_Detection_VS13 {
 			this->label6->Size = System::Drawing::Size(23, 18);
 			this->label6->TabIndex = 16;
 	
-			//generate existing id
-			/*
-			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
-			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(id) FROM workshop.CustomerInfo", conDataBase);
-			MySqlDataReader^ myReader;
-			conDataBase->Open();
-			myReader = cmdDataBase->ExecuteReader();
-			String^ content;
-			std::string inKey;
-			while (myReader->Read())
-			{
-				content = myReader->GetString(0);
-				inKey = msclr::interop::marshal_as<std::string>(content);
-			}
-			*/
 			std::string noc = std::to_string(Controller::get_total_customers()+1);
 			noc = "C" + noc;
-			this->label6->Text = L"'"+gcnew String(noc.c_str())+"'";
+			this->label6->Text = L""+gcnew String(noc.c_str())+"";
 			// 
 			// CustomerForm
 			// 
@@ -354,28 +338,6 @@ namespace Face_Detection_VS13 {
 #pragma endregion
 	
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		/* commented
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT MAX(id) FROM workshop.CustomerInfo", conDataBase);
-		MySqlDataReader^ myReader;
-		conDataBase->Open();
-		myReader = cmdDataBase->ExecuteReader();
-		String^ content;
-		std::string inKey;
-		while (myReader->Read())
-		{
-			content = myReader->GetString(0);
-			inKey = msclr::interop::marshal_as<std::string>(content);
-
-		}
-		inKey.erase(0,1);
-		cout << "cuhcufh " << inKey << endl;
-		int id = std::stoi(inKey);
-		Controller::set_total_customers(id);
-		cout << "vbfhvbfb : " << id << endl;
-
-		*/
 		if ((checkBox1->Enabled) && (checkBox2->Enabled)){
 			MessageBox::Show("Please select a Customer Type");
 		}
@@ -406,31 +368,11 @@ namespace Face_Detection_VS13 {
 			std::string picn;
 			MarshalString(pic, picn);
 
-			Controller::add_customer(fn, ln, st, picn, privileged);
+			Controller::add_customer(fn, ln, picn, st, privileged);
 			String^ id = "C" + (Controller::get_total_customers() + 1).ToString();
-			label6->Text = id;
-
-			/*
-			//add customer to the database
-			String^ constring = L"datasource=localhost;port=3306;username=root;password=v10jir10@UOM";
-			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("insert into workshop.CustomerInfo(id,first_name,last_name,status,Picture_name,CustomerType) values('" + id + "','" + fname + "','" + lname + "','" + stat + "','" + pic + "','"+Customertype+"');", conDataBase);
-			MySqlDataReader^ myReader;
-
-			try{
-				conDataBase->Open();
-				myReader = cmdDataBase->ExecuteReader();
-
-				while (myReader->Read()){
-
-				}
-
-
-			}
-			catch (Exception^ ex){
-				MessageBox::Show(ex->Message);
-			}
-			*/
+			MobileDevice::sendMyRequest("RC" + fname + "*" + lname);
+			//label6->Text = id;
+			
 			textBox1->Clear();
 			textBox2->Clear();
 			textBox3->Clear();
@@ -458,11 +400,11 @@ namespace Face_Detection_VS13 {
 	
 	}
 	private: System::Void checkBox2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-		if (badCustomer){
-			badCustomer = false;
+		if (!privileged){
+			privileged = true;
 			checkBox1->Enabled = true;
 		}
-		badCustomer = true;
+		privileged = false;
 		checkBox1->Enabled = false;
 	}
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
